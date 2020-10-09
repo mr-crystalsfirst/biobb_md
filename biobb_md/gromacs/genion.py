@@ -14,13 +14,15 @@ from biobb_md.gromacs.common import GromacsVersionError
 
 
 class Genion:
-    """Wrapper class for the `GROMACS genion <http://manual.gromacs.org/current/onlinehelp/gmx-genion.html>`_ module.
+    """
+    | biobb_md Genion
+    | Wrapper class for the `GROMACS genion <http://manual.gromacs.org/current/onlinehelp/gmx-genion.html>`_ module.
 
     Args:
-        input_tpr_path (str): Path to the input portable run input TPR file. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs/genion.tpr>`_. Accepted formats: tpr.
-        output_gro_path (str): Path to the input structure GRO file. File type: output. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/reference/gromacs/ref_genion.gro>`_. Accepted formats: gro.
-        input_top_zip_path (str): Path the input TOP topology in zip format. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs/genion.zip>`_. Accepted formats: zip.
-        output_top_zip_path (str): Path the output topology TOP and ITP files zipball. File type: output. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/reference/gromacs/ref_genion.zip>`_. Accepted formats: zip.
+        input_tpr_path (str): Path to the input portable run input TPR file. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs/genion.tpr>`_. Accepted formats: tpr (edam:format_2333).
+        output_gro_path (str): Path to the input structure GRO file. File type: output. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/reference/gromacs/ref_genion.gro>`_. Accepted formats: gro (edam:format_2330).
+        input_top_zip_path (str): Path the input TOP topology in zip format. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs/genion.zip>`_. Accepted formats: zip (edam:format_3987).
+        output_top_zip_path (str): Path the output topology TOP and ITP files zipball. File type: output. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/reference/gromacs/ref_genion.zip>`_. Accepted formats: zip (edam:format_3987).
         properties (dic):
             * **output_top_path** (*str*) - ("gio.top") Path the output topology TOP file.
             * **replaced_group** (*str*) - ("SOL") Group of molecules that will be replaced by the solvent.
@@ -37,6 +39,16 @@ class Genion:
             * **container_working_dir** (*str*) - (None) Path to the internal CWD in the container.
             * **container_user_id** (*str*) - (None) User number id to be mapped inside the container.
             * **container_shell_path** (*str*) - ("/bin/bash") Path to the binary executable of the container shell.
+
+    Info:
+        * wrapped_software:
+            * name: GROMACS genion
+            * version: >5.1
+            * license: LGPL 2.1
+        * ontology:
+            * name: EDAM
+            * schema: http://edamontology.org/EDAM.owl
+            
     """
 
     def __init__(self, input_tpr_path: str, output_gro_path: str, input_top_zip_path: str,

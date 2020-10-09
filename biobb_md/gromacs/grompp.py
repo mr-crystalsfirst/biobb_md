@@ -15,7 +15,7 @@ from biobb_md.gromacs.common import GromacsVersionError
 
 class Grompp:
     """
-    | biobb_md.gromacs.grompp Grompp
+    | biobb_md Grompp
     | Wrapper of the `GROMACS grompp <http://manual.gromacs.org/current/onlinehelp/gmx-grompp.html>`_ module.
     | The GROMACS preprocessor module needs to be fed with the input system and the dynamics parameters to create a portable binary run input file TPR. The dynamics parameters are specified in the mdp section of the configuration YAML file. The parameter names and defaults are the same as the ones in the `official MDP specification <http://manual.gromacs.org/current/user-guide/mdp-options.html>`_.
 
@@ -43,13 +43,12 @@ class Grompp:
 
     Info:
         * wrapped_software:
-            * name: GROMACS Grompp
+            * name: GROMACS grompp
             * version: >5.1
             * license: LGPL 2.1
         * ontology:
             * name: EDAM
             * schema: http://edamontology.org/EDAM.owl
-
 
     """
 

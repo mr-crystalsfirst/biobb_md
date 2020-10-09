@@ -12,12 +12,14 @@ from biobb_md.gromacs.common import GromacsVersionError
 
 
 class Genrestr:
-    """Wrapper class for the `GROMACS genrestr <http://manual.gromacs.org/current/onlinehelp/gmx-genrestr.html>`_ module.
+    """
+    | biobb_md Genrestr
+    | Wrapper class for the `GROMACS genrestr <http://manual.gromacs.org/current/onlinehelp/gmx-genrestr.html>`_ module.
 
     Args:
-        input_structure_path (str): Path to the input structure PDB, GRO or TPR format. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs/genrestr.gro>`_. Accepted formats: pdb, gro, tpr.
-        input_ndx_path (str): Path to the input GROMACS index file, NDX format. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs/genrestr.ndx>`_. Accepted formats: ndx.
-        output_itp_path (str): Path the output ITP topology file with restrains. File type: output. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/reference/gromacs/ref_genrestr.itp>`_. Accepted formats: itp.
+        input_structure_path (str): Path to the input structure PDB, GRO or TPR format. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs/genrestr.gro>`_. Accepted formats: pdb (edam:format_1476), gro (edam:format_2330), tpr (edam:format_2333).
+        input_ndx_path (str): Path to the input GROMACS index file, NDX format. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs/genrestr.ndx>`_. Accepted formats: ndx (edam:format_2330).
+        output_itp_path (str): Path the output ITP topology file with restrains. File type: output. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/reference/gromacs/ref_genrestr.itp>`_. Accepted formats: itp (edam:format_3883).
         properties (dic):
             * **restrained_group** (*str*) - ("system") Index group that will be restrained.
             * **force_constants** (*str*) - ("500 500 500") Array of three floats defining the force constants
@@ -31,6 +33,16 @@ class Genrestr:
             * **container_working_dir** (*str*) - (None) Path to the internal CWD in the container.
             * **container_user_id** (*str*) - (None) User number id to be mapped inside the container.
             * **container_shell_path** (*str*) - ("/bin/bash") Path to the binary executable of the container shell.
+
+    Info:
+        * wrapped_software:
+            * name: GROMACS genrestr
+            * version: >5.1
+            * license: LGPL 2.1
+        * ontology:
+            * name: EDAM
+            * schema: http://edamontology.org/EDAM.owl
+            
     """
 
     def __init__(self, input_structure_path: str, input_ndx_path: str, output_itp_path: str,

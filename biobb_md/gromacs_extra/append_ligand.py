@@ -11,16 +11,28 @@ from biobb_common.tools.file_utils import launchlogger
 
 
 class AppendLigand:
-    """This class takes a ligand ITP file and inserts it in a topology.
+    """
+    | biobb_md AppendLigand
+    | This class takes a ligand ITP file and inserts it in a topology.
 
     Args:
-        input_top_zip_path (str): Path the input topology TOP and ITP files zipball. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs_extra/ndx2resttop.zip>`_. Accepted formats: zip.
-        input_itp_path (str): Path to the ligand ITP file to be inserted in the topology. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs_extra/pep_ligand.itp>`_. Accepted formats: itp.
-        output_top_zip_path (str): Path/Name the output topology TOP and ITP files zipball. File type: output. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/reference/gromacs_extra/ref_appendligand.zip>`_. Accepted formats: zip.
+        input_top_zip_path (str): Path the input topology TOP and ITP files zipball. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs_extra/ndx2resttop.zip>`_. Accepted formats: zip (edam:format_3987).
+        input_itp_path (str): Path to the ligand ITP file to be inserted in the topology. File type: input. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/data/gromacs_extra/pep_ligand.itp>`_. Accepted formats: itp (edam:format_3883).
+        output_top_zip_path (str): Path/Name the output topology TOP and ITP files zipball. File type: output. `Sample file <https://github.com/bioexcel/biobb_md/raw/master/biobb_md/test/reference/gromacs_extra/ref_appendligand.zip>`_. Accepted formats: zip (edam:format_3987).
         properties (dic):
             * **posres_name** (*str*) - ("POSRES_LIGAND") String to be included in the ifdef clause.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+
+    Info:
+        * wrapped_software:
+            * name: In house
+            * version: >3.0.0
+            * license: Apache-2.0
+        * ontology:
+            * name: EDAM
+            * schema: http://edamontology.org/EDAM.owl
+            
     """
 
     def __init__(self, input_top_zip_path: str, input_itp_path: str, output_top_zip_path: str,

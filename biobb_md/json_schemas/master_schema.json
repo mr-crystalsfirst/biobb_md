@@ -1,0 +1,145 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://bioexcel.eu/biobb/json_schemas/1.0/master",
+    "name": "Biobb Master",
+    "title": "Schema to validate biobb's json schemas",
+    "description": "Json schema to validate automatically generated json schemas for biobb's",
+    "type": "object",
+    "required": [],
+    "properties": {
+        "info": {
+            "type":"object",
+            "description":"General infomation about the Biobb",
+            "required": ["wrapper_software"],
+            "properties": {
+                "wrapped_software": {
+                    "description": "Info about the wrapped software",
+                    "type": "object",
+                    "required":["name","version","license"],
+                    "properties":{
+                        "name": {
+                            "description": "Program name",
+                            "type": "string"
+                        },
+                        "version": {
+                            "description": "Software version, optionally indicating minimun value",
+                            "type": "string"
+                        },
+                        "license": {
+                            "description": "Software license",
+                            "type": "string",
+                            "enum": ["LGPL 2.1", "MIT", "Apache", "other"]
+                        }
+                    }
+                },
+                "ontology": {
+                    "description": "Ontology used to define parameter types",
+                    "type": "object",
+                    "properties": {
+                        "name": {"type":"string"},
+                        "schema": {"type": "string", "format":"uri"}
+                    }
+                }
+                
+            }
+        },
+        "required": {
+            "description": "Mandatory parameters",
+            "type": "array",
+            "items": {"type":"string"}
+        },
+        "properties":{
+            "description": "Parameters and properties used to call biobb",
+            "type":"object",
+            "properties":{
+                "properties": {
+                    "description": "Biobb settings",
+                    "type":"object",
+                    "required":[],
+                    "additionalProperties": {
+                        "oneOf" : [
+                            "$ref": "#/definitions/biobb_property",
+                            "$ref": "#/definitions/biobb_property_object"
+                            "$ref": "#/definitions/biobb_file_path"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "definitions" :{
+        "biobb_property": {
+            "type" : "object",
+            "required": ["type", "description", "wf_prop"],
+            "properties" : {
+                "type" : {
+                    "type": "string",
+                    "enum": ["string", "number", "integer", "boolean"]
+                },
+                "default": {
+                    "type":"string"
+                },
+                "wf_prop": {
+                    "type":"boolean"
+                },
+                "description":{
+                    "type":"string"
+                },
+                "min": {
+                    "type": "string"
+                },
+                "max": {
+                    "type": "string"
+                },
+                "step": {
+                    "type": "string"
+                }
+            }
+        },
+        "biobb_property_object":{
+            "type": "object",
+            "required": ["description", "wf_prop"],
+            "properties": {
+                "type": {
+                    "type":"string",
+                    "enum":"object"
+                },
+                "description":{
+                    "type":"string"
+                },
+                "default": {
+                    "type":"string"
+                },
+                "wf_prop": {
+                    "type":"boolean"
+                },
+                "additionalParameters":"True"
+            }
+        },
+        "biobb_file_path":{
+            "type":"object",
+            "required":["type","description","filetype"],
+            "properties":{
+                "type": {"type":"string", "enum":["string"]},
+                "description":{"type":"string"},
+                "filetype":{"type":"string", "enum":["input","output","inout"]},
+                "sample":{"type":"string","format":"uri"},
+                "enum":{"type":"array",
+                    "items":{"type":"string","pattern":"^\\.*\\..*\\$$"}
+                },
+                "file_formats":{
+                    "type": "array",
+                    "items":{
+                        "type":"object",
+                        "properties":{
+                            "extension":{"type":"string","pattern":"^\\.*\\..*\\$$"},
+                            "description": {"type":"sting"},
+                            "edam":{"type":"string"}
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

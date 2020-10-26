@@ -8,15 +8,15 @@
     "required": [],
     "properties": {
         "info": {
-            "type":"object",
-            "description":"General infomation about the Biobb",
-            "required": ["wrapper_software"],
+            "type": "object",
+            "description": "General infomation about the Biobb",
+            "required": ["wrapped_software"],
             "properties": {
                 "wrapped_software": {
                     "description": "Info about the wrapped software",
                     "type": "object",
-                    "required":["name","version","license"],
-                    "properties":{
+                    "required": ["name", "version", "license"],
+                    "properties": {
                         "name": {
                             "description": "Program name",
                             "type": "string"
@@ -36,54 +36,67 @@
                     "description": "Ontology used to define parameter types",
                     "type": "object",
                     "properties": {
-                        "name": {"type":"string"},
-                        "schema": {"type": "string", "format":"uri"}
+                        "name": {
+                            "type": "string"
+                        },
+                        "schema": {
+                            "type": "string",
+                            "format": "uri"
+                        }
                     }
                 }
-                
             }
         },
         "required": {
             "description": "Mandatory parameters",
             "type": "array",
-            "items": {"type":"string"}
+            "items": {
+                "type": "string"
+            }
         },
-        "properties":{
+        "properties": {
             "description": "Parameters and properties used to call biobb",
-            "type":"object",
-            "properties":{
+            "type": "object",
+            "properties": {
                 "properties": {
-                    "description": "Biobb settings",
+                    "description":"'Properties' dictionary passed as parameter to biobb",
                     "type":"object",
-                    "required":[],
-                    "additionalProperties": {
-                        "oneOf" : [
-                            "$ref": "#/definitions/biobb_property",
-                            "$ref": "#/definitions/biobb_property_object"
-                            "$ref": "#/definitions/biobb_file_path"
-                        ]
+                    "properties":{
+                        "type": {
+                            "type":"string", "enum":["object"]
+                        },
+                        "properties": {
+                            "type":"object",
+                            "additionalProperties": {
+                                "oneOf": [
+                                    {"$ref": "#/definitions/biobb_property"},
+                                    {"$ref": "#/definitions/biobb_property_object"}
+                                ]
+                            }
+                        }
                     }
                 }
-            }
+            },
+            "additionalProperties": {"$ref": "#/definitions/biobb_file_path"}
         }
     },
-    "definitions" :{
+    "definitions": {
         "biobb_property": {
-            "type" : "object",
+            "type": "object",
             "required": ["type", "description", "wf_prop"],
-            "properties" : {
-                "type" : {
+            "properties": {
+                "type": {
                     "type": "string",
                     "enum": ["string", "number", "integer", "boolean"]
                 },
                 "default": {
-                    "type":"string"
+                    "type": "string"
                 },
                 "wf_prop": {
-                    "type":"boolean"
+                    "type": "boolean"
                 },
-                "description":{
-                    "type":"string"
+                "description": {
+                    "type": "string"
                 },
                 "min": {
                     "type": "string"
@@ -96,50 +109,74 @@
                 }
             }
         },
-        "biobb_property_object":{
+        "biobb_property_object": {
             "type": "object",
-            "required": ["description", "wf_prop"],
+            "required": ["wf_prop", "description"],
             "properties": {
                 "type": {
-                    "type":"string",
-                    "enum":"object"
+                    "type": "string",
+                    "enum": ["object"]
                 },
-                "description":{
-                    "type":"string"
+                "required": {
+                    "type":"array",
+                    "items": {"type":"string"}
+                },
+                "description": {
+                    "type": "string"
                 },
                 "default": {
-                    "type":"string"
+                    "type": "string"
                 },
                 "wf_prop": {
-                    "type":"boolean"
-                },
-                "additionalParameters":"True"
+                    "type": "boolean"
+                }
             }
         },
-        "biobb_file_path":{
-            "type":"object",
-            "required":["type","description","filetype"],
-            "properties":{
-                "type": {"type":"string", "enum":["string"]},
-                "description":{"type":"string"},
-                "filetype":{"type":"string", "enum":["input","output","inout"]},
-                "sample":{"type":"string","format":"uri"},
-                "enum":{"type":"array",
-                    "items":{"type":"string","pattern":"^\\.*\\..*\\$$"}
+        "biobb_file_path": {
+            "type": "object",
+            "required": ["type", "description", "filetype"],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": ["string"]
                 },
-                "file_formats":{
+                "description": {
+                    "type": "string"
+                },
+                "filetype": {
+                    "type": "string",
+                    "enum": ["input", "output", "inout"]
+                },
+                "sample": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "enum": {
                     "type": "array",
-                    "items":{
-                        "type":"object",
-                        "properties":{
-                            "extension":{"type":"string","pattern":"^\\.*\\..*\\$$"},
-                            "description": {"type":"sting"},
-                            "edam":{"type":"string"}
+                    "items": {
+                        "type": "string",
+                        "pattern": "^\\.*\\..*\\$$"
+                    }
+                },
+                "file_formats": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "extension": {
+                                "type": "string",
+                                "pattern": "^\\.*\\..*\\$$"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "edam": {
+                                "type": "string"
+                            }
                         }
                     }
                 }
             }
         }
-
     }
 }

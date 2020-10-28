@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://bioexcel.eu/biobb_md/json_schemas/1.0/genrestr",
     "name": "biobb_md Genrestr",
-    "title": "Wrapper class for the GROMACS genrestr  module.",
+    "title": "Wrapper class for the GROMACS genrestr module.",
     "description": null,
     "type": "object",
     "info": {

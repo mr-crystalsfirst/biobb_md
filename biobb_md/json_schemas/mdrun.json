@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://bioexcel.eu/biobb_md/json_schemas/1.0/mdrun",
     "name": "biobb_md Mdrun",
-    "title": "Wrapper of the GROMACS mdrun  module.",
+    "title": "Wrapper of the GROMACS mdrun module.",
     "description": null,
     "type": "object",
     "info": {
@@ -156,7 +156,7 @@
             "type": "object",
             "properties": {
                 "num_threads": {
-                    "type": "number",
+                    "type": "integer",
                     "default": "0",
                     "wf_prop": false,
                     "description": "Let GROMACS guess. The number of threads that are going to be used."

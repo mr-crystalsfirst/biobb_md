@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://bioexcel.eu/biobb_md/json_schemas/1.0/solvate",
     "name": "biobb_md Solvate",
-    "title": "Wrapper of the GROMACS solvate  module.",
+    "title": "Wrapper of the GROMACS solvate module.",
     "description": null,
     "type": "object",
     "info": {

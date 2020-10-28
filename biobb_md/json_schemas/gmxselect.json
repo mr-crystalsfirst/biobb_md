@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://bioexcel.eu/biobb_md/json_schemas/1.0/gmxselect",
     "name": "biobb_md Gmxselect",
-    "title": "Wrapper of the GROMACS select  module.",
+    "title": "Wrapper of the GROMACS select module.",
     "description": null,
     "type": "object",
     "info": {

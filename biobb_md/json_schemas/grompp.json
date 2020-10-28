@@ -2,8 +2,8 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://bioexcel.eu/biobb_md/json_schemas/1.0/grompp",
     "name": "biobb_md Grompp",
-    "title": "Wrapper of the GROMACS grompp  module.",
-    "description": "The GROMACS preprocessor module needs to be fed with the input system and the dynamics parameters to create a portable binary run input file TPR. The dynamics parameters are specified in the mdp section of the configuration YAML file. The parameter names and defaults are the same as the ones in the official MDP specification .",
+    "title": "Wrapper of the GROMACS grompp module.",
+    "description": "The GROMACS preprocessor module needs to be fed with the input system and the dynamics parameters to create a portable binary run input file TPR. The dynamics parameters are specified in the mdp section of the configuration YAML file. The parameter names and defaults are the same as the ones in the official MDP specification.",
     "type": "object",
     "info": {
         "wrapped_software": {
@@ -104,7 +104,7 @@
         },
         "input_mdp_path": {
             "type": "string",
-            "description": "Path of the input GROMACS `MDP file <http://manual.gromacs.org/current/user-guide/mdp-options.html>`_",
+            "description": "Path of the input GROMACS MDP file",
             "filetype": "input",
             "sample": null,
             "enum": [
@@ -113,7 +113,7 @@
             "file_formats": [
                 {
                     "extension": ".*\\.mdp$",
-                    "description": "Path of the input GROMACS `MDP file <http://manual.gromacs.org/current/user-guide/mdp-options.html>`_",
+                    "description": "Path of the input GROMACS MDP file",
                     "edam": "format_2330"
                 }
             ]
@@ -165,7 +165,7 @@
                     }
                 },
                 "maxwarn": {
-                    "type": "number",
+                    "type": "integer",
                     "default": "10",
                     "wf_prop": false,
                     "description": "Maximum number of allowed warnings.",
